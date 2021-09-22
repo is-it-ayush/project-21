@@ -116,4 +116,12 @@ class point
             }
         }
     }
+
+    public static void main(String[] args) {
+        point p = new point(4, 4);
+
+        p.get_array();
+        p.display_mat();
+        p.result();
+    }
 }
