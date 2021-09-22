@@ -1,6 +1,10 @@
-import java.io.*;
-import java.lang.System.Logger;
-import java.net.ProxySelector;
+/**
+ * Check to see if each row of a double dimensional array are pseduo or not!
+ * @author Ayush Gupta XII-F
+ */
+
+import java.util.Arrays;
+import java.util.Scanner;
 class point
 {
     int A[][];
@@ -10,19 +14,21 @@ class point
     {
         R=p;
         C=q;
+        A = new int[R][C];
     }
 
-    void get_array() throws IOException
+    void get_array()
     {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Scanner s = new Scanner(System.in);
         for(int i=0;i<R;i++)
         {
             for(int j=0;j<C;j++)
             {
                 System.out.println("Enter the element at Row: " + i + "\t Cloumn: " + j);
-                A[i][j] = Integer.parseInt(br.readLine());
+                A[i][j] = s.nextInt();
             }
         }
+
     }
 
     void display_mat()
@@ -38,27 +44,76 @@ class point
     }
 
     int check_pseudo(int a[])
-    {
-        int i=0,l = a.length-1;
-
-            if(a.length%2==0)
+{
+        int l=0,r=a.length-1,sum=0, grp[];
+        if(a.length%2!=0)
+        {
+            /**
+             * Odd
+             * Addition Of Middle Element Twice
+             * Number Of Groups = (Odd+1)/2
+             */
+            grp = new int[(a.length+1)/2];
+            for(int i=0;i<grp.length;i++)
             {
-                int sum = 0, c=0, gsum ;
-                while(i!=l)   // loop from left and loop from right.....  i forwards and l backwards...
+                if(l!=r)
                 {
-                    //even elements 
-                    // 3 5 2 4               or            3 6 4 2 5
-
-                    sum+=a[i] + a[l];
-                    c++;
-                    i++;
-                    l--;
+                    grp[i] = a[l] + a[r];
+                    sum+=grp[i];
                 }
+                else
+                {
+                    grp[i] = 2 * a[l];
+                    sum+=grp[i];
+                }
+                l++;
+                r--;
+            }
+        }
+        else
+        {
+            /** Even
+             *  Number Of Groups = (Even)/2
+            */
+            grp = new int[(a.length)/2];
+            for(int i=0;i<grp.length;i++)
+            {
+                grp[i] = a[l] + a[r];
+                sum+=grp[i];
+                l++;
+                r--;
+            }
+        }
 
+        //Checking If Sum Of All Groups is Same
+        int same_test = grp[0];
+        for(int i=0;i<grp.length;i++)
+        {
+            if(grp[i]!=same_test)
+                return 0;
+        }
+
+        //Pseduo Check  If  Sum Of All Groups (8+8+8=24) == (3*8=24) 
+        if(sum==(grp.length)*grp[0])
+        {
+            return 1;
+        }
+     
+        return 0;
+    }
+
+    void result()
+    {
+        for(int i=0;i<A.length;i++)
+        {
+            if(check_pseudo(A[i])==1)
+            {
+                System.out.println(Arrays.toString(A[i]) + "\t" + "Row " + (i+1) + " -> pseduo numbers");
             }
             else
-            {}
-        
-        return 0;
+            {
+                System.out.println(Arrays.toString(A[i]) + "\t" + "Row " + (i+1) + " -> not pseduo numbers");
+            }
+        }
     }
 }
