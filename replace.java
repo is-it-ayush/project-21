@@ -7,22 +7,28 @@ public class replace {
     replace() {}
 
     replace(String s) {
+        //Constructor to assign "s" to "str"
         str = s;
     }
 
     void display()
     {
-        
+        //Display Function
         System.out.println("String: " + str);
         System.out.println("Sub String: " + substr);
         System.out.println("Frequency Of Sub-String in String: " + find_frequency());
     }
 
-    static void getword(String ss)
+    static void getword(String ss) throws Exception
     {
+        //Checking if "ss" isnt blank.
         if(!ss.contains(" "))
         {
             substr = ss;
+        }
+        else
+        {
+            throw new Exception("Sub-String cannot be blank!");
         }
     }
 
@@ -40,7 +46,7 @@ public class replace {
         return freq;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         Scanner s = new Scanner(System.in);
         System.out.println("Enter a String: ");
