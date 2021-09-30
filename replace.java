@@ -1,60 +1,60 @@
-import java.util.Scanner;
+    import java.util.Scanner;
 
-public class replace {
-    String str;
-    static String substr;
-    
-    replace() {}
+    public class replace {
+        String str;
+        static String substr;
+        
+        replace() {}
 
-    replace(String s) {
-        //Constructor to assign "s" to "str"
-        str = s;
-    }
-
-    void display()
-    {
-        //Display Function
-        System.out.println("String: " + str);
-        System.out.println("Sub String: " + substr);
-        System.out.println("Frequency Of Sub-String in String: " + find_frequency());
-    }
-
-    static void getword(String ss) throws Exception
-    {
-        //Checking if "ss" isnt blank.
-        if(!ss.contains(" "))
-        {
-            substr = ss;
+        replace(String s) {
+            //Constructor to assign "s" to "str"
+            str = s;
         }
-        else
+
+        void display()
         {
-            throw new Exception("Sub-String cannot be blank!");
+            //Display Function
+            System.out.println("String: " + str);
+            System.out.println("Sub String: " + substr);
+            System.out.println("Frequency Of Sub-String in String: " + find_frequency());
+        }
+
+        static void getword(String ss) throws Exception
+        {
+            //Checking if "ss" isnt blank.
+            if(!ss.contains(" "))
+            {
+                substr = ss;
+            }
+            else
+            {
+                throw new Exception("Sub-String cannot be blank!");
+            }
+        }
+
+        int find_frequency()
+        {
+            int freq = 0;
+            str = str.trim();
+            String w[] = str.split(" ");
+
+            for(int i=0;i<w.length;i++)
+            {
+                if(w[i].indexOf(substr)!=-1)
+                    freq++;
+            }
+            return freq;
+        }
+
+        public static void main(String[] args) throws Exception {
+
+            Scanner s = new Scanner(System.in);
+            System.out.println("Enter a String: ");
+            String x = s.nextLine();
+            replace rp = new replace(x);
+            System.out.println("Enter a Sub-string to check: ");
+            String y = s.next();
+            rp.getword(y);
+            rp.display();
         }
     }
-
-    int find_frequency()
-    {
-        int freq = 0;
-        str = str.trim();
-        String w[] = str.split(" ");
-
-        for(int i=0;i<w.length;i++)
-        {
-            if(w[i].indexOf(substr)!=-1)
-                freq++;
-        }
-        return freq;
-    }
-
-    public static void main(String[] args) throws Exception {
-
-        Scanner s = new Scanner(System.in);
-        System.out.println("Enter a String: ");
-        String x = s.nextLine();
-        replace rp = new replace(x);
-        System.out.println("Enter a Sub-string to check: ");
-        String y = s.next();
-        rp.getword(y);
-        rp.display();
-    }
-}
