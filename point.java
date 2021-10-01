@@ -1,5 +1,5 @@
 import java.util.Scanner;
-class point {
+class POINT {
     int a[][],row,col,i_r,i_c;
     Scanner sc;
 
