@@ -5,12 +5,12 @@
 
 import java.util.Arrays;
 import java.util.Scanner;
-class point
+class OLD_POINT
 {
     int A[][];
     int R,C;
 
-    point(int p,int q)
+    OLD_POINT(int p,int q)
     {
         R=p;
         C=q;
@@ -118,7 +118,7 @@ class point
     }
 
     public static void main(String[] args) {
-        point p = new point(4, 4);
+        OLD_POINT p = new OLD_POINT(4, 4);
 
         p.get_array();
         p.display_mat();

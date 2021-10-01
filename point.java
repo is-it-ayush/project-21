@@ -1,9 +1,16 @@
-import java.util.Scanner;
-class POINT {
-    int a[][],row,col,i_r,i_c;
-    Scanner sc;
+/** 
+ * @author Ayush Gupta 
+ * Saddle Point Program - Question 8 
+ * XII - F 
+ */ 
 
-    void input()
+import java.util.*;
+
+public class Point {
+    static int a[][],row,col,i_r,i_c;
+    static Scanner sc;
+
+    static void input()
     {
         sc = new Scanner(System.in);
         System.out.println("Enter The Row Size Of DDA: ");
@@ -20,7 +27,7 @@ class POINT {
             }
         }
     }
-    void display_mat()
+    static void display_mat()
     {
         for(int i=0;i<row;i++)
         {
@@ -30,5 +37,41 @@ class POINT {
             }
             System.out.println();
         }
+    }
+
+    static void check_saddle()
+    {
+        int n = row;
+        for (int i = 0; i < n; i++)
+        {
+            int min_row = a[i][0],i_r =i, i_c = 0;
+            for (int j = 1; j < n; j++)
+            {
+                if (min_row > a[i][j])
+                {
+                    min_row = a[i][j];
+                    i_r = i;
+                    i_c = j;
+                }
+            }
+
+            int k;
+            for (k = 0; k < n; k++)
+                if (min_row < a[k][i_c])
+                    break;
+
+            if (k == n)
+            {
+                System.out.println("Saddle Point: " + min_row + " at (" + i_r + "," + i_c + ")");
+            }
+        }
+        
+
+    }
+    
+    public static void main(String[] args) {
+        input();
+        display_mat();
+        check_saddle();            
     }
 }
