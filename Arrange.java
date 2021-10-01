@@ -1,4 +1,8 @@
-import java.lang.ModuleLayer.Controller;
+/** 
+ * @author Ayush Gupta 
+ * Arrange Array Program - Question 7 
+ * XII - F 
+ */ 
 import java.util.*;
 
 public class Arrange {
