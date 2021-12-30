@@ -32,6 +32,12 @@
             }
         }
 
+/**
+ * STEP 1: Intialize a vairable 'freq' representing frequency to 0.
+ * STEP 2: Trim the String.
+ * STEP 3: Split the strings words into a new array 'w' representing words using the 'str.split()' method.
+ * STEP 4: For each element(word) in the array 'w'. Check if the 
+ */
         int find_frequency()
         {
             int freq = 0;

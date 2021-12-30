@@ -42,7 +42,20 @@ class OLD_POINT
             System.out.println();
         }
     }
-
+/**
+ * STEP 1: Set 'l' marking left position to 0, 'r' marking right position to the length of array 'a' minus 1, 'sum' to 0, and declare a new array 'grp'.
+ * STEP 2: Check if The length of array 'a' is Even or Odd.
+ * STEP 3: If its Even, intialize the array 'grp' with a new length equal to the half of the array 'a'.
+ * STEP 4: For each element in 'grp' array, add the 'l' (Left Position) and 'r' (Right Position) from array 'a' and add sum of both elements to variable 'sum', while simultaneously incrementing 'l' and decrementing 'r'.
+ * STEP 5: Goto STEP 10.
+ * STEP 6: If its Odd, intialize the array 'grp' with a new length equal to the half (plus 1 if odd) of the array 'a'.
+ * STEP 7: For each element in group array 'grp' array.
+ * STEP 8: If 'l' (Left Position) and 'r' (Right Position) are not equal, if not add the elements from array 'a' at index 'l' and 'r' also add the sum of both variables to variable 'sum'.
+ * STEP 9: If 'l' (Left Position) and 'r' (Right Position) are equal, Add the 'l' term twice.
+ * STEP 10: Increment 'l' and Decrement 'r' simulatenously after checking STEP 8.
+ * STEP 11: Check if all the elements in array 'grp' are same to ensure that sum of groups are infact equal, if not return 0.
+ * STEP 12: Check if Sum Of All Elements from Array 'a' is equal to the number of elements in array 'grp' multiplied by the frist element in array 'grp', If true, return 1, else return 0.
+ */
     int check_pseudo(int a[])
 {
         int l=0,r=a.length-1,sum=0, grp[];
@@ -93,7 +106,7 @@ class OLD_POINT
                 return 0;
         }
 
-        //Pseduo Check  If  Sum Of All Groups (8+8+8=24) == (3*8=24) 
+        //Pseduo Check If Sum Of All Groups (8+8+8=24) == (3*8=24) 
         if(sum==(grp.length)*grp[0])
         {
             return 1;
